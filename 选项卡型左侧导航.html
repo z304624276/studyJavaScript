@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style type="text/css">
+			*{margin: 0; padding: 0;}
+			.container1{width: 280px; height: 100%; position: absolute; left:-100%; top: 0; background: blue; transition: all .5s;}
+			.container1.on{left: 0;}
+			.container1 a{color:#fff; float: right;}
+			.topColumn{ width: 280px; height: 500px; background: #000; float: left;}
+			.topColumn li{ width: 260px; margin: 10px 0; background: #fff; overflow: hidden;}
+			.topColumn li a{ float: left; color: #000; text-decoration: none;}
+			.topColumn li span{float: right; margin-right: 5%; cursor: pointer;}
+			.column{ width: 260px; float: left; background: #f00; display: none;}
+			.column li{ background: #f00;}
+			.center{width: 200px; height: 200px; position:fixed; left: 0; right:0; top: 25%; margin: 0 auto; background: black; color: #fff;}
+		</style>
+		
+	</head>
+	<body>
+		<script type="text/javascript">		
+		function open(){
+			var btn=document.querySelector('a');
+			var box=document.querySelector('.container1')
+			var close=document.querySelector('.container1 a')
+			var topColumn=document.querySelectorAll('.topColumn li span');
+			var column=document.querySelectorAll('.column');
+			var last=topColumn[0];
+				btn.onclick=function(){
+					box.className +=' on';
+				};
+				close.onclick=function(){
+					box.className='container1';
+				};
+				for(var i=0;i<topColumn.length;i++){					
+					if(column[i].querySelectorAll('li').length==0){
+						topColumn[i].innerHTML='';
+					}else{
+						topColumn[i].innerHTML='∨';
+					}
+				}
+				for(var i=0;i<topColumn.length;i++){
+					topColumn[i].sub=[i];
+					topColumn[i].onclick=function(){
+						if(this.innerHTML=='∨'){
+							last.innerHTML='∨';
+							column[last.sub].style.display='none';
+							this.innerHTML='>';
+							column[this.sub].style.display='block';
+							last=this;
+						}else{
+							this.innerHTML='∨'
+							column[this.sub].style.display='none';
+						}
+					};
+				}
+				
+		};
+		window.onload= open;
+
+		
+
+
+
+
+
+
+
+		</script>
+		<a id="btn" href="JavaScript:;">点击显示导航</a>
+		<div class="container1">
+			<a href="javascript:;">X</a>
+			<ul class="topColumn">
+				<li>
+					<a href="javascript:;">菜单1</a><span></span>
+					<ul class="column">
+						<li><a href="javascript:;">栏目1</a></li>
+						<li><a href="javascript:;">栏目2</a></li>
+						<li><a href="javascript:;">栏目3</a></li>
+						<li><a href="javascript:;">栏目4</a></li>
+						<li><a href="javascript:;">栏目5</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">菜单2</a><span></span>
+					<ul class="column">
+						<li><a href="javascript:;">栏目1</a></li>
+						<li><a href="javascript:;">栏目2</a></li>
+						<li><a href="javascript:;">栏目3</a></li>
+						<li><a href="javascript:;">栏目4</a></li>
+						<li><a href="javascript:;">栏目5</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">菜单3</a><span></span>
+					<ul class="column">
+						
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">菜单4</a><span></span>
+					<ul class="column">
+						<li><a href="javascript:;">栏目1</a></li>
+						<li><a href="javascript:;">栏目2</a></li>
+						<li><a href="javascript:;">栏目3</a></li>
+						<li><a href="javascript:;">栏目4</a></li>
+						<li><a href="javascript:;">栏目5</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">菜单5</a><span></span>
+					<ul class="column">
+						
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">菜单6</a><span></span>
+					<ul class="column">
+						<li><a href="javascript:;">栏目1</a></li>
+						<li><a href="javascript:;">栏目2</a></li>
+						<li><a href="javascript:;">栏目3</a></li>
+						<li><a href="javascript:;">栏目4</a></li>
+						<li><a href="javascript:;">栏目5</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">菜单7</a><span></span>
+					<ul class="column">
+						<li><a href="javascript:;">栏目1</a></li>
+						<li><a href="javascript:;">栏目2</a></li>
+						<li><a href="javascript:;">栏目3</a></li>
+						<li><a href="javascript:;">栏目4</a></li>
+						<li><a href="javascript:;">栏目5</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">菜单8</a><span></span>
+					<ul class="column">
+						<li><a href="javascript:;">栏目1</a></li>
+						<li><a href="javascript:;">栏目2</a></li>
+						<li><a href="javascript:;">栏目3</a></li>
+						<li><a href="javascript:;">栏目4</a></li>
+						<li><a href="javascript:;">栏目5</a></li>
+					</ul>
+				</li>
+				<li>
+					<a href="javascript:;">菜单9</a><span></span>
+					<ul class="column">
+						
+					</ul>
+				</li>
+				
+				
+			</ul>
+		</div>
+	 
+	 
+	 <div class="center">选项卡效果，自动判断二级ul下是否存在li，若没有li则不显示“∨”</div>
+	 
+	</body>
+</html>
